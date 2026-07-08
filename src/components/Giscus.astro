@@ -1,15 +1,13 @@
 ---
 // Renders the giscus comment widget, backed by GitHub Discussions on freyja-org/discussion.
 //
-// Setup steps before this will work:
-// 1. Create the freyja-org/discussion repo and enable Discussions on it (Settings > Features).
-// 2. Install the giscus app on that repo: https://github.com/apps/giscus
-// 3. Run the config generator at https://giscus.app, pointing it at freyja-org/discussion,
-//    and copy the data-repo-id / data-category / data-category-id values it outputs below.
+// The giscus app (https://github.com/apps/giscus) must be installed on that repo
+// before comments will actually load — until then this will show
+// "giscus is not installed on this repository".
 const repo = 'freyja-org/discussion';
-const repoId = 'TODO_REPO_ID';
+const repoId = 'R_kgDOTSC9Uw';
 const category = 'General';
-const categoryId = 'TODO_CATEGORY_ID';
+const categoryId = 'DIC_kwDOTSC9U84DAx4N';
 ---
 
 <section id="giscus-comments">
