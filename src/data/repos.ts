@@ -35,4 +35,14 @@ export const repos: Repo[] = [
 		description: 'SARS-CoV-2-specific Freyja resources.',
 		url: 'https://github.com/andersen-lab/Freyja-SC2',
 	},
+	{
+		name: 'Bygul',
+		description: 'Amplicon read simulator.',
+		url: 'https://github.com/andersen-lab/Bygul',
+	},
+	{
+		name: 'BarcodeForge',
+		description: 'A CLI tool for generating pathogen-specific barcodes for Freyja.',
+		url: 'https://github.com/andersen-lab/BarcodeForge',
+	},
 ];
