@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { repos } from '../data/repos';
+---
+
+<Base title="Home">
+	<h1>Freyja Community Hub</h1>
+	<p>
+		<a href="https://github.com/andersen-lab/Freyja">Freyja</a>, developed for wastewater genomic surveillance in <a href="https://www.nature.com/articles/s41586-022-05049-6"> Karthikeyan and Levy et. al 2022</a>, 
+		has now been generalized to diversed pathogens and deploymebnt contexts. This site is intended as a central hub to link to Freyja repositories and projects and support community discussion. Freyja continues to be developed by the
+		<a href="https://github.com/andersen-lab">Andersen Lab</a> at Scripps Research.
+	</p>
+
+	<h2>Repositories</h2>
+	<ul class="repo-list">
+		{
+			repos.map((repo) => (
+				<li class="repo-card">
+					<a href={repo.url}>{repo.name}</a>
+					<p>{repo.description}</p>
+				</li>
+			))
+		}
+	</ul>
+
+	<p>
+		<a href="/discussions/">Join the discussion &rarr;</a>
+	</p>
+</Base>
+
+<style>
+	.repo-list {
+		list-style: none;
+		padding: 0;
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	}
+
+	.repo-card {
+		border: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+		border-radius: 0.5rem;
+		padding: 1rem;
+	}
+
+	.repo-card a {
+		font-weight: 600;
+	}
+
+	.repo-card p {
+		margin: 0.5rem 0 0;
+		font-size: 0.9rem;
+		opacity: 0.85;
+	}
+</style>
