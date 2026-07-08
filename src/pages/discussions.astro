@@ -1,15 +1,74 @@
 ---
 import Base from '../layouts/Base.astro';
 import Giscus from '../components/Giscus.astro';
+import { getRecentDiscussions } from '../lib/discussions';
+
+const discussions = await getRecentDiscussions();
 ---
 
 <Base title="Discussions">
 	<h1>Discussions</h1>
 	<p>
-		Community discussion happens via GitHub Discussions on
+		Community discussion happens on GitHub Discussions at
 		<a href="https://github.com/freyja-org/discussion/discussions">freyja-org/discussion</a>.
-		You can post directly there, or use the embedded thread below (requires a GitHub account).
 	</p>
 
+	<h2>Recent discussions</h2>
+	{
+		discussions.length === 0 ? (
+			<p>
+				Couldn't load recent discussions right now — browse them directly on
+				<a href="https://github.com/freyja-org/discussion/discussions"> GitHub</a>.
+			</p>
+		) : (
+			<ul class="discussion-list">
+				{discussions.map((d) => (
+					<li>
+						<a href={d.url}>{d.title}</a>
+						<span class="meta">
+							{d.categoryEmoji} {d.categoryName} · {d.commentCount} comments
+						</span>
+					</li>
+				))}
+			</ul>
+		)
+	}
+	<p>
+		<a href="https://github.com/freyja-org/discussion/discussions/new/choose">
+			Start a new discussion &rarr;
+		</a>
+	</p>
+
+	<h2>Comment on this page</h2>
 	<Giscus />
 </Base>
+
+<style>
+	.discussion-list {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.discussion-list li {
+		border: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+		border-radius: 0.5rem;
+		padding: 0.75rem 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 0.5rem;
+	}
+
+	.discussion-list a {
+		font-weight: 600;
+	}
+
+	.meta {
+		font-size: 0.85rem;
+		opacity: 0.75;
+	}
+</style>
