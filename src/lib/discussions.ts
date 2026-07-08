@@ -4,6 +4,15 @@ export interface DiscussionSummary {
 	updatedAt: string;
 	commentCount: number;
 	categoryName: string;
+	bodyPreview: string;
+}
+
+const PREVIEW_LENGTH = 140;
+
+function makePreview(bodyText: string): string {
+	const flattened = bodyText.replace(/\s+/g, ' ').trim();
+	if (flattened.length <= PREVIEW_LENGTH) return flattened;
+	return `${flattened.slice(0, PREVIEW_LENGTH).trimEnd()}…`;
 }
 
 export const CATEGORY_META: Record<string, { color: string; emoji: string }> = {
@@ -23,6 +32,7 @@ const QUERY = `
 					title
 					url
 					updatedAt
+					bodyText
 					comments { totalCount }
 					category { name }
 				}
@@ -60,6 +70,7 @@ export async function getRecentDiscussions(limit = 8): Promise<DiscussionSummary
 			updatedAt: n.updatedAt,
 			commentCount: n.comments.totalCount,
 			categoryName: n.category.name,
+			bodyPreview: makePreview(n.bodyText),
 		}));
 	} catch {
 		return [];
