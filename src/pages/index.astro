@@ -36,8 +36,8 @@ import { publications } from '../data/publications';
 		}
 	</ul>
 
-	<p>
-		<a href="/discussions/">Join the discussion &rarr;</a>
+	<p class="cta">
+		<a href="/discussions/" class="cta-link">Join the discussion &rarr;</a>
 	</p>
 </Base>
 
@@ -90,5 +90,23 @@ import { publications } from '../data/publications';
 		margin: 0.3rem 0 0;
 		font-size: 0.85rem;
 		opacity: 0.75;
+	}
+
+	.cta {
+		margin-top: 2rem;
+	}
+
+	.cta-link {
+		display: inline-block;
+		font-size: 1.15rem;
+		font-weight: 700;
+		padding: 0.75rem 1.5rem;
+		border-radius: 999px;
+		border: 2px solid currentColor;
+		text-decoration: none;
+	}
+
+	.cta-link:hover {
+		background: color-mix(in srgb, currentColor 10%, transparent);
 	}
 </style>
