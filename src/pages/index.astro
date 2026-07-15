@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import { repos } from '../data/repos';
+import { publications } from '../data/publications';
 ---
 
 <Base title="Home">
 	<h1>Freyja Community Hub</h1>
 	<p>
-		<a href="https://github.com/andersen-lab/Freyja" target="_blank" rel="noopener noreferrer">Freyja</a>, developed for bioinformatic analysis of wastewater genomic surveillance in <a href="https://www.nature.com/articles/s41586-022-05049-6" target="_blank" rel="noopener noreferrer"> Karthikeyan and Levy et. al 2022</a>,
+		<a href="https://github.com/andersen-lab/Freyja" target="_blank" rel="noopener noreferrer">Freyja</a>, originally developed for bioinformatic analysis of wastewater genomic surveillance in <a href="https://www.nature.com/articles/s41586-022-05049-6" target="_blank" rel="noopener noreferrer"> Karthikeyan and Levy et. al 2022</a>,
 		has now been generalized to diverse pathogens and deployment contexts. This site is intended as a central hub to link to Freyja repositories and projects and support community discussion. Freyja continues to be developed by the{' '}
 		<a href="https://github.com/andersen-lab" target="_blank" rel="noopener noreferrer">Andersen Lab</a> at Scripps Research.
 	</p>
@@ -18,6 +19,18 @@ import { repos } from '../data/repos';
 				<li class="repo-card">
 					<a href={repo.url} target="_blank" rel="noopener noreferrer">{repo.name}</a>
 					<p>{repo.description}</p>
+				</li>
+			))
+		}
+	</ul>
+
+	<h2>Publications</h2>
+	<ul class="publication-list">
+		{
+			publications.map((pub) => (
+				<li class="publication-item">
+					<a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a>
+					<p class="publication-meta">{pub.authors} — {pub.venue}, {pub.year}</p>
 				</li>
 			))
 		}
@@ -51,5 +64,31 @@ import { repos } from '../data/repos';
 		margin: 0.5rem 0 0;
 		font-size: 0.9rem;
 		opacity: 0.85;
+	}
+
+	.publication-list {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.publication-item {
+		padding: 0.9rem 0;
+		border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+	}
+
+	.publication-item:first-child {
+		border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+	}
+
+	.publication-item a {
+		font-weight: 600;
+	}
+
+	.publication-meta {
+		margin: 0.3rem 0 0;
+		font-size: 0.85rem;
+		opacity: 0.75;
 	}
 </style>
