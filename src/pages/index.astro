@@ -45,12 +45,15 @@ import { publications } from '../data/publications';
 	.repo-list {
 		list-style: none;
 		padding: 0;
-		display: grid;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 1rem;
-		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 	}
 
 	.repo-card {
+		flex: 1 1 220px;
+		max-width: 260px;
 		border: 1px solid color-mix(in srgb, currentColor 15%, transparent);
 		border-radius: 0.5rem;
 		padding: 1rem;
