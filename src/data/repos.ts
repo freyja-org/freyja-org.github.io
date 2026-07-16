@@ -27,7 +27,7 @@ export const repos: Repo[] = [
 	},
 	{
 		name: 'Freyja-SC2',
-		description: 'SARS-CoV-2-specific Freyja resources.',
+		description: 'Automated SRA downloading, processing, and Freyja analysis pipeline for SARS-CoV-2 wastewater sequencing data.',
 		url: 'https://github.com/andersen-lab/Freyja-SC2',
 	},
 	{
