@@ -26,11 +26,6 @@ export const repos: Repo[] = [
 		url: 'https://github.com/andersen-lab/Freyja-barcodes',
 	},
 	{
-		name: 'Freyja-process-barcodes',
-		description: 'Tooling for building and processing Freyja barcode sets.',
-		url: 'https://github.com/andersen-lab/Freyja-process-barcodes',
-	},
-	{
 		name: 'Freyja-SC2',
 		description: 'SARS-CoV-2-specific Freyja resources.',
 		url: 'https://github.com/andersen-lab/Freyja-SC2',
